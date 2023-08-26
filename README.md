@@ -5,4 +5,4 @@
 
 [**openssl**](https://www.openssl.org/) Provides SSL capabilities [^1]
 
-[^1]: [Apache License 2.0](./deplicenses/adobe/LICENSE.txt)
+[^1]: [Apache License 2.0](deplicenses/adobe/LICENSE.txt)
