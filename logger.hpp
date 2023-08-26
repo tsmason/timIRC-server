@@ -9,4 +9,4 @@ class Logger{
 		Error,
 		Critical
 	};
-}
+};
