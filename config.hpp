@@ -17,6 +17,14 @@ class Config{
 		 */
 		in_addr 		serverAddress();
 
+
+		/**
+		 * @brief Gets the server port
+		 *
+		 * @return in_port_t server port object
+		 */
+		in_port_t 		port();
+
 		/**
 		 * @brief Gets the maximum number of concurrent connections the server can handle.
 		 *
@@ -60,7 +68,7 @@ class Config{
 
 	private:
 		//Consturctors
-		Config(in_addr serverAddress);
+		Config();
 		Config(const Config&) = delete;
 		Config& operator=(const Config&) = delete;
 
@@ -72,8 +80,6 @@ class Config{
 		unsigned int		m_threads;
 		unsigned int		m_messageRateLimit;
 		Logger::LogLevel	m_logLevel;
-#ifdef USE_SSL
 		bool 			m_usingSSL;
-#endif
 };
 

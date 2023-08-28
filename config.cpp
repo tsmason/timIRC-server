@@ -1,15 +1,15 @@
 #include <arpa/inet.h>
 #include "config.hpp"
+#include "configparser.hpp"
 
 Config& 		Config::value(){
-	static Config instance([]{
-			in_addr serverAddress;
-			inet_aton("127.0.0.1", &serverAddress);
-			return serverAddress;}());
+	static Config instance;
 	return instance;
 };
 
 in_addr 		Config::serverAddress(){return m_ipAddress;}
+
+in_port_t 		Config::port(){return m_port;}
 
 unsigned int		Config::maximumConnections(){return m_maxConnections;}
 
@@ -21,8 +21,16 @@ unsigned int		Config::rateLimit(){return m_messageRateLimit;}
 
 Logger::LogLevel	Config::logLevel(){return m_logLevel;}
 
-#ifdef USE_SSL
 bool 			Config::usingSSL(){return m_usingSSL;}
-#endif
 
-Config::Config(in_addr serverAddress):m_ipAddress(serverAddress){}
+Config::Config(){
+	ConfigParser& parser = ConfigParser::value();
+	m_ipAddress = parser.getIP();
+	m_port = parser.getPort();
+	m_maxConnections = parser.getMaxConnections();
+	m_clientTimeOut = parser.getClientTimeOut();
+	m_threads = parser.getThreads();
+	m_messageRateLimit = parser.getMessageRateLimit();
+	m_logLevel = parser.getLogLevel();
+	m_usingSSL = parser.getUsingSSL();
+}

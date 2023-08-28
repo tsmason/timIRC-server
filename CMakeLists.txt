@@ -36,3 +36,5 @@ if(OpenSSL_FOUND)
 	target_link_libraries(timIRCserv ${OPENSSL_LIBRARIES})
 endif()
 
+#copy config.json from resources directory
+configure_file(${CMAKE_SOURCE_DIR}/resources/config.json ${CMAKE_BINARY_DIR}/config.json COPYONLY)

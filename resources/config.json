@@ -1,0 +1,10 @@
+{
+	"IPAddress": 		"127.0.0.1",
+	"Port": 		6667,
+	"MaxConnections": 	50,
+	"TimeOut": 		60,
+	"Threads": 		10,
+	"RateLimit": 		3,
+	"LogLevel": 		0,
+	"SSL": 			true
+}
